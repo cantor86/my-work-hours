@@ -11,106 +11,54 @@
 
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;padding:16px;background:#0b1220;color:#f4f7fb;
- font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif
-}
+body{margin:0;padding:16px;background:#0b1220;color:#f4f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
 main{max-width:600px;margin:auto}
 h1{color:#42b883;font-size:28px;margin:8px 0}
 h2{font-size:19px;margin:0}
 h3{font-size:15px}
 p{color:#94a3b8}
-.card{
- background:#151f30;padding:18px;border:1px solid #26354a;
- border-radius:18px;margin:16px 0
-}
+.card{background:#151f30;padding:18px;border:1px solid #26354a;border-radius:18px;margin:16px 0}
 label{display:block;color:#a8b4c7;margin:12px 0 5px;font-size:14px}
-input,select{
- width:100%;padding:12px;border-radius:10px;
- border:1px solid #39465b;background:#0b1220;
- color:white;font-size:16px;outline:none
-}
+input,select{width:100%;padding:12px;border-radius:10px;border:1px solid #39465b;background:#0b1220;color:white;font-size:16px;outline:none}
 input:focus,select:focus{border-color:#42b883}
-button{
- padding:13px;border:0;border-radius:10px;
- background:#42b883;color:#062116;font-weight:700;
- font-size:14px;margin-top:12px;width:100%;
- cursor:pointer;display:flex;align-items:center;
- justify-content:center;gap:8px
-}
+button{padding:13px;border:0;border-radius:10px;background:#42b883;color:#062116;font-weight:700;font-size:14px;margin-top:12px;width:100%;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
 button:active{transform:scale(.98)}
-button svg{width:19px;height:19px;stroke:currentColor;fill:none;
- stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-svg.icon{width:27px;height:27px;stroke:white;fill:none;
- stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+button svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+svg.icon{width:27px;height:27px;stroke:white;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .hidden{display:none!important}
 .header{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
 .brand{display:flex;align-items:center;gap:11px}
-.brand-icon{
- width:46px;height:46px;background:#176b45;border-radius:13px;
- display:flex;align-items:center;justify-content:center
-}
+.brand-icon{width:46px;height:46px;background:#176b45;border-radius:13px;display:flex;align-items:center;justify-content:center}
 .brand-icon svg{width:25px;height:25px}
 .subtitle{font-size:12px;color:#94a3b8;margin:3px 0}
-.home-intro{
- background:linear-gradient(135deg,#173d32,#151f30);
- border:1px solid #285b45;border-radius:18px;padding:20px;margin:20px 0 24px
-}
+.home-intro{background:linear-gradient(135deg,#173d32,#151f30);border:1px solid #285b45;border-radius:18px;padding:20px;margin:20px 0 24px}
 .home-intro h2{font-size:20px;margin-bottom:7px}
 .home-intro p{font-size:13px;margin:0}
 .menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.menu-item{
- background:#151f30;border:1px solid #26354a;border-radius:17px;
- padding:18px 10px;min-height:145px;display:flex;flex-direction:column;
- align-items:center;justify-content:center;gap:11px;cursor:pointer
-}
+.menu-item{background:#151f30;border:1px solid #26354a;border-radius:17px;padding:18px 10px;min-height:145px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;cursor:pointer}
 .menu-item:active{transform:scale(.96);background:#1d3041}
-.menu-icon{
- width:67px;height:67px;border-radius:16px;
- background:linear-gradient(145deg,#239b65,#176b45);
- display:flex;align-items:center;justify-content:center;
- box-shadow:0 5px 14px rgba(35,155,101,.2)
-}
+.menu-icon{width:67px;height:67px;border-radius:16px;background:linear-gradient(145deg,#239b65,#176b45);display:flex;align-items:center;justify-content:center;box-shadow:0 5px 14px rgba(35,155,101,.2)}
 .menu-icon svg{width:34px;height:34px}
 .menu-item strong{font-size:14px;color:#f4f7fb}
 .menu-item small{font-size:11px;color:#94a3b8;text-align:center}
 .home-footer{text-align:center;color:#64748b;font-size:11px;margin:25px 0 12px}
 .topbar{display:flex;align-items:center;gap:13px;margin:8px 0 22px}
-.home-button{
- width:45px;height:45px;min-width:45px;margin:0;padding:0;
- background:#176b45;color:white;border-radius:12px
-}
+.home-button{width:45px;height:45px;min-width:45px;margin:0;padding:0;background:#176b45;color:white;border-radius:12px}
 .home-button svg{width:22px;height:22px}
 .topbar h2{font-size:19px}
 .topbar p{font-size:11px;margin:4px 0 0}
 .section-heading{display:flex;align-items:center;gap:13px;margin-bottom:20px}
-.icon-box{
- width:46px;height:46px;min-width:46px;background:#176b45;
- border-radius:13px;display:flex;align-items:center;justify-content:center
-}
+.icon-box{width:46px;height:46px;min-width:46px;background:#176b45;border-radius:13px;display:flex;align-items:center;justify-content:center}
 .icon-box svg{width:24px;height:24px}
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .stat{background:#0b1220;border:1px solid #26354a;padding:13px;border-radius:13px;min-width:0}
 .stat-top{display:flex;align-items:center;gap:7px;color:#a8b4c7;font-size:12px}
-.stat-icon{
- width:28px;height:28px;background:#173c32;border-radius:8px;
- display:flex;align-items:center;justify-content:center;color:#42b883
-}
+.stat-icon{width:28px;height:28px;background:#173c32;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#42b883}
 .stat-icon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
 .stat strong{display:block;font-size:23px;margin-top:10px;color:#42b883;overflow-wrap:anywhere}
 .report-heading{color:#42b883;margin:22px 0 8px}
 .report-note{color:#8fa0b7;font-size:12px;line-height:1.6;margin-top:14px}
 .report-divider{border:0;border-top:1px solid #39465b;margin:22px 0}
-.day{padding:13px 0;border-bottom:1px solid #39465b}
-.day-title{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.day-title b{color:#42b883;font-size:14px}
-.day-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.day-fields label{font-size:12px}
-.day-fields input{font-size:15px}
-.day input[type="checkbox"]{width:19px;height:19px;accent-color:#42b883}
-.off-label{display:flex;align-items:center;gap:6px;margin:0;color:#a8b4c7;font-size:11px;white-space:nowrap}
-.off-label input{width:18px}
-.disabled{opacity:.35}
 .entry{border-top:1px solid #39465b;padding:14px 0;display:flex;justify-content:space-between;align-items:center;gap:8px}
 .entry b{font-size:14px}
 small{color:#a8b4c7}
@@ -122,31 +70,28 @@ small{color:#a8b4c7}
 .empty-history svg{width:35px;height:35px;stroke:#42b883}
 .secondary{background:#26354a;color:#e2e8f0}
 .danger{background:#713b46;color:white}
+
+/* MONTHLY SHIFT CALENDAR */
 .month-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
-.month-nav button{width:42px;min-width:42px;margin:0;padding:10px}
-.month-nav strong{color:#42b883;text-align:center}
-.calendar{
- display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px
-}
-.calendar-head{text-align:center;color:#94a3b8;font-size:11px;padding:7px 0}
-.calendar-day{
- min-height:66px;background:#0b1220;border:1px solid #26354a;
- border-radius:9px;padding:6px 2px;text-align:center;cursor:pointer;
- display:flex;flex-direction:column;align-items:center;gap:4px
-}
-.calendar-day strong{font-size:13px}
-.calendar-day small{font-size:9px;line-height:1.2}
-.calendar-day.worked{border-color:#239b65;background:#12372b}
+.month-nav button{width:44px;min-width:44px;margin:0;padding:10px;font-size:22px}
+.month-nav strong{color:#42b883;text-align:center;font-size:17px}
+.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.calendar-head{text-align:center;color:#94a3b8;font-size:11px;padding:7px 0;font-weight:700}
+.calendar-day{min-width:0;min-height:88px;background:#0b1220;border:1px solid #26354a;border-radius:9px;padding:6px 3px;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;overflow:hidden}
+.calendar-day strong{font-size:13px;align-self:flex-start;padding-left:3px}
 .calendar-day.today{outline:2px solid #42b883}
-.calendar-day.selected{background:#245a43;border-color:#42b883}
+.calendar-day.worked{border-color:#239b65;background:#12372b}
 .calendar-day.empty{visibility:hidden}
-.calendar-legend{display:flex;gap:14px;flex-wrap:wrap;color:#94a3b8;font-size:11px;margin-top:12px}
+.calendar-day .shift-time{display:block;width:100%;font-size:9px;line-height:1.25;color:#b9f5d6;background:#176b45;border-radius:4px;padding:3px 1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.calendar-day .more-shifts{font-size:9px;color:#42b883;font-weight:700}
+.calendar-day .no-shift{font-size:9px;color:#53647b}
+.calendar-legend{display:flex;gap:14px;flex-wrap:wrap;color:#94a3b8;font-size:11px;margin-top:13px}
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#239b65;margin-right:5px}
+.calendar-summary{background:#0b1220;border:1px solid #26354a;border-radius:12px;padding:13px;margin-top:16px}
+.calendar-summary strong{display:block;color:#42b883;font-size:20px;margin-top:4px}
+.calendar-summary small{font-size:11px}
 .setting-note{font-size:12px;color:#94a3b8;line-height:1.6}
-.badge{
- display:inline-block;padding:4px 8px;border-radius:7px;
- background:#173c32;color:#42b883;font-size:11px
-}
+.badge{display:inline-block;padding:4px 8px;border-radius:7px;background:#173c32;color:#42b883;font-size:11px}
 @media(max-width:380px){
  body{padding:11px}.card{padding:14px}
  .menu-item{min-height:135px;padding:13px 7px}
@@ -156,7 +101,8 @@ small{color:#a8b4c7}
  .actions button{font-size:10px;padding:8px}
  .stat strong{font-size:20px}
  .calendar{gap:3px}
- .calendar-day{min-height:58px}
+ .calendar-day{min-height:76px;padding:5px 2px}
+ .calendar-day .shift-time{font-size:8px}
 }
 </style>
 </head>
@@ -164,46 +110,20 @@ small{color:#a8b4c7}
 <body>
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-<symbol id="i-home" viewBox="0 0 24 24">
-<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1Z"/>
-</symbol>
-<symbol id="i-calendar" viewBox="0 0 24 24">
-<rect x="3" y="5" width="18" height="16" rx="2"/>
-<path d="M16 3v4M8 3v4M3 10h18M8 14h2M14 14h2"/>
-</symbol>
-<symbol id="i-clock" viewBox="0 0 24 24">
-<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
-</symbol>
-<symbol id="i-chart" viewBox="0 0 24 24">
-<path d="M3 3v18h18M7 14l4-4 4 3 6-7"/>
-</symbol>
-<symbol id="i-money" viewBox="0 0 24 24">
-<rect x="2" y="5" width="20" height="14" rx="2"/>
-<circle cx="12" cy="12" r="3"/><path d="M6 9h.01M18 15h.01"/>
-</symbol>
-<symbol id="i-users" viewBox="0 0 24 24">
-<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-<circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-</symbol>
-<symbol id="i-history" viewBox="0 0 24 24">
-<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/>
-</symbol>
-<symbol id="i-download" viewBox="0 0 24 24">
-<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-<path d="m7 10 5 5 5-5M12 15V3"/>
-</symbol>
-<symbol id="i-save" viewBox="0 0 24 24">
-<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/>
-<path d="M17 21v-8H7v8M7 3v5h9"/>
-</symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1Z"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h2M14 14h2"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l4-4 4 3 6-7"/></symbol>
+<symbol id="i-money" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 9h.01M18 15h.01"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+<symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/></symbol>
+<symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8M7 3v5h9"/></symbol>
 <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
 <symbol id="i-edit" viewBox="0 0 24 24"><path d="m16 4 4 4M4 20l4-.8L20 7.2 16.8 4 4.8 16Z"/></symbol>
 <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2m3 0-1 14H6L5 6m4 4v6m6-6v6"/></symbol>
 <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></symbol>
-<symbol id="i-settings" viewBox="0 0 24 24">
-<circle cx="12" cy="12" r="3"/>
-<path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.6a8 8 0 0 1-1.7 1l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.7-1l-1.7.6-1.4-2.4 1.4-1.1a8 8 0 0 1 0-2l-1.4-1.1 1.4-2.4 1.7.6a8 8 0 0 1 1.7-1l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.7 1l1.7-.6 1.4 2.4-1.4 1.1a8 8 0 0 1 0 2Z"/>
-</symbol>
+<symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.6a8 8 0 0 1-1.7 1l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.7-1l-1.7.6-1.4-2.4 1.4-1.1a8 8 0 0 1 0-2l-1.4-1.1 1.4-2.4 1.7.6a8 8 0 0 1 1.7-1l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.7 1l1.7-.6 1.4 2.4-1.4 1.1a8 8 0 0 1 0 2Z"/></symbol>
 </svg>
 
 <main>
@@ -213,10 +133,7 @@ small{color:#a8b4c7}
  <div class="header">
   <div class="brand">
    <div class="brand-icon"><svg class="icon"><use href="#i-clock"/></svg></div>
-   <div>
-    <h1>My Work Hours</h1>
-    <p class="subtitle">PERSONAL WORK DASHBOARD</p>
-   </div>
+   <div><h1>My Work Hours</h1><p class="subtitle">PERSONAL WORK DASHBOARD</p></div>
   </div>
  </div>
 
@@ -228,7 +145,7 @@ small{color:#a8b4c7}
  <div class="menu-grid">
   <div class="menu-item" onclick="showPage('plannerPage')">
    <div class="menu-icon"><svg class="icon"><use href="#i-calendar"/></svg></div>
-   <strong>Weekly Planner</strong><small>Plan your shifts & calendar</small>
+   <strong>My Calendar</strong><small>View and manage your shifts</small>
   </div>
   <div class="menu-item" onclick="showPage('addPage')">
    <div class="menu-icon"><svg class="icon"><use href="#i-clock"/></svg></div>
@@ -252,46 +169,43 @@ small{color:#a8b4c7}
   </div>
  </div>
 
- <button class="secondary" onclick="showPage('settingsPage')">
-  <svg><use href="#i-settings"/></svg> SETTINGS
- </button>
+ <button class="secondary" onclick="showPage('settingsPage')"><svg><use href="#i-settings"/></svg> SETTINGS</button>
  <div class="home-footer">MY WORK HOURS · PROFESSIONAL EDITION</div>
 </section>
 
-<!-- PLANNER AND MONTHLY CALENDAR -->
+<!-- SINGLE MONTHLY SHIFT CALENDAR -->
 <section id="plannerPage" class="hidden">
  <div class="topbar">
   <button class="home-button" onclick="showPage('homePage')"><svg><use href="#i-home"/></svg></button>
-  <div><h2>Weekly Planner</h2><p>Plan your working week</p></div>
+  <div><h2>My Shift Calendar</h2><p>All your shifts in one place</p></div>
  </div>
 
  <div class="card">
   <div class="section-heading">
    <div class="icon-box"><svg class="icon"><use href="#i-calendar"/></svg></div>
-   <h2>Monthly Calendar</h2>
+   <div><h2>Monthly Calendar</h2><p style="font-size:11px;margin:4px 0 0">Tap any date to add or manage a shift</p></div>
   </div>
+
   <div class="month-nav">
-   <button class="secondary" onclick="changeMonth(-1)">‹</button>
+   <button class="secondary" onclick="changeMonth(-1)" aria-label="Previous month">‹</button>
    <strong id="calendarMonth">Month</strong>
-   <button class="secondary" onclick="changeMonth(1)">›</button>
+   <button class="secondary" onclick="changeMonth(1)" aria-label="Next month">›</button>
   </div>
-  <div class="calendar" id="calendarGrid"></div>
-  <div class="calendar-legend">
-   <span><i class="dot"></i>Day with saved shift</span>
-   <span>Tap a day to add a shift</span>
-  </div>
-  <p class="report-note" id="calendarTotal"></p>
- </div>
 
- <div class="card">
-  <div class="section-heading">
-   <div class="icon-box"><svg class="icon"><use href="#i-calendar"/></svg></div>
-   <h2>Weekly Shift Planner</h2>
+  <div class="calendar" id="calendarGrid"></div>
+
+  <div class="calendar-legend">
+   <span><i class="dot"></i>Saved shift</span>
+   <span>Tap a date to add or edit</span>
   </div>
-  <label>Monday – Week starting</label>
-  <input id="weekStart" type="date">
-  <div id="weekDays"></div>
-  <button onclick="saveWeek()"><svg><use href="#i-save"/></svg> SAVE WEEK</button>
+
+  <div class="calendar-summary">
+   <small>MONTHLY WORK SUMMARY</small>
+   <strong id="calendarHours">0.00 hours</strong>
+   <p class="report-note" id="calendarTotal" style="margin:5px 0 0"></p>
+  </div>
+
+  <button onclick="openNewShiftForDate(todayString)"><svg><use href="#i-plus"/></svg> ADD SHIFT</button>
  </div>
 </section>
 
@@ -460,19 +374,13 @@ small{color:#a8b4c7}
 const STORAGE_KEY="myShifts";
 const SETTINGS_KEY="myWorkHoursSettings";
 
-const defaultSettings={
- rate:14.50,
- threshold:40,
- multiplier:1
-};
+const defaultSettings={rate:14.50,threshold:40,multiplier:1};
 
 function loadSettings(){
  try{
   const saved=JSON.parse(localStorage.getItem(SETTINGS_KEY)||"{}");
   return {...defaultSettings,...saved};
- }catch(e){
-  return {...defaultSettings};
- }
+ }catch(e){return {...defaultSettings};}
 }
 let settings=loadSettings();
 
@@ -487,12 +395,7 @@ function loadShifts(){
   return data.filter(s=>
    s&&validDate(s.date)&&validTime(s.start)&&validTime(s.end)&&
    Number.isFinite(Number(s.br))&&Number.isFinite(Number(s.rate))
-  ).map(s=>({
-   ...s,
-   id:s.id??(Date.now()+Math.random()),
-   br:Number(s.br),
-   rate:Number(s.rate)
-  }));
+  ).map(s=>({...s,id:s.id??(Date.now()+Math.random()),br:Number(s.br),rate:Number(s.rate)}));
  }catch(e){
   alert("Saved shift data could not be read. Please restore a backup if you have one.");
   return [];
@@ -502,19 +405,12 @@ let shifts=loadShifts();
 
 /* DATE HELPERS */
 function localDate(d){
- return d.getFullYear()+"-"+
-  String(d.getMonth()+1).padStart(2,"0")+"-"+
-  String(d.getDate()).padStart(2,"0");
+ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 }
 function mondayOf(d){
  let x=new Date(d.getFullYear(),d.getMonth(),d.getDate());
  x.setDate(x.getDate()-(x.getDay()+6)%7);
  return x;
-}
-function dateFromMonday(value,offset){
- let d=new Date(value+"T12:00:00");
- d.setDate(d.getDate()+offset);
- return localDate(d);
 }
 function validDate(d){
  if(!/^\d{4}-\d{2}-\d{2}$/.test(d))return false;
@@ -527,9 +423,7 @@ function validTime(t){
  return h>=0&&h<=23&&m>=0&&m<=59;
 }
 function formatDate(d){
- return new Date(d+"T12:00:00").toLocaleDateString("en-GB",{
-  weekday:"short",day:"numeric",month:"short",year:"numeric"
- });
+ return new Date(d+"T12:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short",year:"numeric"});
 }
 function weekKey(date){
  return localDate(mondayOf(new Date(date+"T12:00:00")));
@@ -539,10 +433,8 @@ function weekKey(date){
 const today=new Date();
 const todayString=localDate(today);
 const currentMonday=localDate(mondayOf(today));
-const dayNames=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 
 document.getElementById("date").value=todayString;
-document.getElementById("weekStart").value=currentMonday;
 document.getElementById("reportWeek").value=currentMonday;
 document.getElementById("reportMonth").value=todayString.substring(0,7);
 document.getElementById("rate").value=settings.rate;
@@ -561,6 +453,7 @@ function showPage(pageId){
 function save(){
  localStorage.setItem(STORAGE_KEY,JSON.stringify(shifts));
  render();
+ if(!document.getElementById("plannerPage").classList.contains("hidden"))renderCalendar();
 }
 
 /* SHIFT CALCULATION */
@@ -575,27 +468,18 @@ function hours(s){
  return Math.max(0,duration(s.start,s.end,Number(s.br))/60);
 }
 
-/*
- OVERTIME ALLOCATION:
- Each Monday-Sunday week is calculated separately.
- Shifts are processed chronologically.
- Hours above the weekly threshold are marked as overtime.
-*/
+/* WEEKLY OVERTIME */
 function calculateOvertime(list){
  const result={};
  const groups={};
-
  list.forEach(s=>{
   const key=weekKey(s.date);
   if(!groups[key])groups[key]=[];
   groups[key].push(s);
  });
-
  Object.keys(groups).forEach(key=>{
   let used=0;
-  groups[key].sort((a,b)=>
-   (a.date+" "+a.start).localeCompare(b.date+" "+b.start)
-  );
+  groups[key].sort((a,b)=>(a.date+" "+a.start).localeCompare(b.date+" "+b.start));
   groups[key].forEach(s=>{
    const h=hours(s);
    const regular=Math.min(h,Math.max(0,settings.threshold-used));
@@ -606,16 +490,15 @@ function calculateOvertime(list){
  });
  return result;
 }
-
 function shiftPay(s,allocation){
  const h=hours(s);
  const parts=allocation||{regular:h,overtime:0};
- return parts.regular*Number(s.rate)+
-  parts.overtime*Number(s.rate)*settings.multiplier;
+ return parts.regular*Number(s.rate)+parts.overtime*Number(s.rate)*settings.multiplier;
 }
 
-function totals(list){
- const allocations=calculateOvertime(list);
+/* allocationSource allows month reports to calculate overtime across full weeks */
+function totals(list,allocationSource=list){
+ const allocations=calculateOvertime(allocationSource);
  let totalHours=0,regular=0,overtime=0,pay=0;
  list.forEach(s=>{
   const h=hours(s);
@@ -638,9 +521,8 @@ function addShift(){
  const rateText=document.getElementById("rate").value;
  const br=Number(brText),rate=Number(rateText);
 
- if(!validDate(date)||!validTime(start)||!validTime(end)||
-  brText===""||rateText===""||!Number.isFinite(br)||
-  !Number.isFinite(rate)||br<0||rate<0||duration(start,end,br)<=0){
+ if(!validDate(date)||!validTime(start)||!validTime(end)||brText===""||rateText===""||
+  !Number.isFinite(br)||!Number.isFinite(rate)||br<0||rate<0||duration(start,end,br)<=0){
   alert("Please complete all fields correctly.");
   return;
  }
@@ -648,7 +530,6 @@ function addShift(){
  const shift={date,start,end,br,rate};
 
  if(idText!==""){
-  const id=Number(idText);
   const index=shifts.findIndex(s=>String(s.id)===idText);
   if(index===-1){alert("Shift could not be found.");return;}
   if(shifts.some(s=>s.date===date&&String(s.id)!==idText)){
@@ -667,6 +548,13 @@ function addShift(){
   alert("Shift saved!");
   document.getElementById("date").value=todayString;
  }
+}
+
+/* NEW SHIFT FROM CALENDAR */
+function openNewShiftForDate(date){
+ cancelEdit();
+ document.getElementById("date").value=date;
+ showPage("addPage");
 }
 
 /* EDIT SHIFT */
@@ -703,86 +591,42 @@ function deleteShift(id){
  save();
 }
 
-/* WEEKLY PLANNER */
-function buildWeek(){
- const monday=document.getElementById("weekStart").value;
- if(!validDate(monday))return;
- const container=document.getElementById("weekDays");
- container.innerHTML="";
-
- dayNames.forEach((name,i)=>{
-  const date=dateFromMonday(monday,i);
-  const existing=shifts.find(s=>s.date===date);
-  const day=document.createElement("div");
-  day.className="day";
-  day.innerHTML=`
-   <div class="day-title">
-    <b>${name} · ${date}</b>
-    <label class="off-label">
-     <input type="checkbox" id="off${i}" ${existing?"":" "}>
-     DAY OFF
-    </label>
-   </div>
-   <div class="day-fields" id="fields${i}">
-    <div><label>Start time</label><input type="time" id="start${i}" value="${existing?existing.start:"09:00"}"></div>
-    <div><label>Finish time</label><input type="time" id="end${i}" value="${existing?existing.end:"17:00"}"></div>
-    <div><label>Unpaid break (minutes)</label><input type="number" id="break${i}" value="${existing?existing.br:30}" min="0"></div>
-   </div>`;
-  container.append(day);
-  document.getElementById("off"+i).addEventListener("change",()=>toggleDay(i));
- });
-}
-function toggleDay(i){
- const off=document.getElementById("off"+i).checked;
- const fields=document.getElementById("fields"+i);
- fields.classList.toggle("disabled",off);
- fields.querySelectorAll("input").forEach(x=>x.disabled=off);
-}
-document.getElementById("weekStart").addEventListener("change",buildWeek);
-
-function saveWeek(){
- const monday=document.getElementById("weekStart").value;
- if(!validDate(monday)){alert("Please select a valid Monday.");return;}
- const newShifts=[];
- let skipped=0;
-
- for(let i=0;i<7;i++){
-  if(document.getElementById("off"+i).checked)continue;
-  const date=dateFromMonday(monday,i);
-  const start=document.getElementById("start"+i).value;
-  const end=document.getElementById("end"+i).value;
-  const brText=document.getElementById("break"+i).value;
-  const br=Number(brText);
-
-  if(!validTime(start)||!validTime(end)||brText===""||
-   !Number.isFinite(br)||br<0||duration(start,end,br)<=0){
-   alert("Please check the times and breaks for "+dayNames[i]+". Use DAY OFF if you are not working.");
-   return;
-  }
-  if(shifts.some(s=>s.date===date)){skipped++;continue;}
-  newShifts.push({
-   id:Date.now()+i+Math.floor(Math.random()*1000),
-   date,start,end,br,rate:settings.rate
-  });
- }
- if(!newShifts.length){
-  alert("No new shifts to save. The selected dates may already exist in Shift History.");
-  return;
- }
- shifts.push(...newShifts);
- save();
- buildWeek();
- renderCalendar();
- alert(newShifts.length+" shifts saved successfully!"+
-  (skipped?" "+skipped+" existing date(s) skipped.":""));
-}
-
-/* MONTHLY CALENDAR */
+/* MONTHLY SHIFT CALENDAR */
 let calendarDate=new Date(today.getFullYear(),today.getMonth(),1);
+
 function changeMonth(offset){
  calendarDate.setMonth(calendarDate.getMonth()+offset);
  renderCalendar();
 }
+
+function openCalendarDate(date){
+ const selected=shifts.filter(s=>s.date===date).sort((a,b)=>a.start.localeCompare(b.start));
+ if(selected.length===0){
+  openNewShiftForDate(date);
+  return;
+ }
+ if(selected.length===1){
+  editShift(selected[0].id);
+  return;
+ }
+ let message="There are "+selected.length+" shifts on this date:\n";
+ selected.forEach((s,index)=>{
+  message+=(index+1+". "+s.start+" - "+s.end+"\n");
+ });
+ message+="\nEnter the number of the shift you want to edit, or press Cancel to add another shift.";
+ const answer=prompt(message);
+ if(answer===null){
+  openNewShiftForDate(date);
+  return;
+ }
+ const choice=Number(answer);
+ if(Number.isInteger(choice)&&choice>=1&&choice<=selected.length){
+  editShift(selected[choice-1].id);
+ }else{
+  alert("Please choose a valid shift number.");
+ }
+}
+
 function renderCalendar(){
  const year=calendarDate.getFullYear();
  const month=calendarDate.getMonth();
@@ -791,45 +635,73 @@ function renderCalendar(){
  const offset=(first.getDay()+6)%7;
  const grid=document.getElementById("calendarGrid");
  if(!grid)return;
+
  document.getElementById("calendarMonth").textContent=
   calendarDate.toLocaleDateString("en-GB",{month:"long",year:"numeric"});
  grid.innerHTML="";
+
  ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].forEach(d=>{
   const head=document.createElement("div");
   head.className="calendar-head";
   head.textContent=d;
   grid.append(head);
  });
+
  for(let i=0;i<offset;i++){
   const blank=document.createElement("div");
   blank.className="calendar-day empty";
   grid.append(blank);
  }
- let monthHours=0,monthPay=0,workedDays=0;
+
+ const monthShifts=shifts.filter(s=>s.date.startsWith(year+"-"+String(month+1).padStart(2,"0")));
+ const monthTotals=totals(monthShifts,shifts);
+ let workedDays=0;
+
  for(let day=1;day<=days;day++){
   const date=localDate(new Date(year,month,day));
-  const selected=shifts.filter(s=>s.date===date);
-  const total=totals(selected);
-  monthHours+=total.totalHours;
-  monthPay+=total.pay;
-  if(selected.length)workedDays++;
+  const selected=shifts.filter(s=>s.date===date).sort((a,b)=>a.start.localeCompare(b.start));
+
   const cell=document.createElement("div");
   cell.className="calendar-day";
   if(selected.length)cell.classList.add("worked");
   if(date===todayString)cell.classList.add("today");
-  cell.innerHTML=`<strong>${day}</strong>`+
-   (selected.length?`<small>${total.totalHours.toFixed(1)} h</small>`:"");
-  cell.title=selected.length?`${selected.length} shift(s), ${total.totalHours.toFixed(2)} hours`:"No saved shift";
-  cell.addEventListener("click",()=>{
-   document.getElementById("date").value=date;
-   cancelEdit();
-   document.getElementById("date").value=date;
-   showPage("addPage");
-  });
+
+  const number=document.createElement("strong");
+  number.textContent=day;
+  cell.append(number);
+
+  if(selected.length){
+   workedDays++;
+   selected.slice(0,2).forEach(s=>{
+    const time=document.createElement("span");
+    time.className="shift-time";
+    time.textContent=s.start+"–"+s.end;
+    cell.append(time);
+   });
+   if(selected.length>2){
+    const more=document.createElement("span");
+    more.className="more-shifts";
+    more.textContent="+"+(selected.length-2)+" more";
+    cell.append(more);
+   }
+  }else{
+   const empty=document.createElement("span");
+   empty.className="no-shift";
+   empty.textContent="—";
+   cell.append(empty);
+  }
+
+  cell.title=selected.length?
+   selected.length+" shift(s): "+selected.map(s=>s.start+"–"+s.end).join(", "):
+   "Tap to add a shift";
+
+  cell.addEventListener("click",()=>openCalendarDate(date));
   grid.append(cell);
  }
+
+ document.getElementById("calendarHours").textContent=monthTotals.totalHours.toFixed(2)+" hours";
  document.getElementById("calendarTotal").textContent=
-  `${workedDays} days worked · ${monthHours.toFixed(2)} hours · £${monthPay.toFixed(2)} estimated gross`;
+  workedDays+" days worked · "+monthShifts.length+" shifts · £"+monthTotals.pay.toFixed(2)+" estimated gross";
 }
 
 /* REPORTS */
@@ -837,9 +709,11 @@ function weeklyReport(){
  const value=document.getElementById("reportWeek").value;
  if(!validDate(value))return;
  const first=localDate(mondayOf(new Date(value+"T12:00:00")));
- const end=localDate(new Date(new Date(first+"T12:00:00").getTime()+7*86400000));
+ const endDate=new Date(first+"T12:00:00");
+ endDate.setDate(endDate.getDate()+7);
+ const end=localDate(endDate);
  const selected=shifts.filter(s=>s.date>=first&&s.date<end);
- const t=totals(selected);
+ const t=totals(selected,shifts);
  setText("weeklyHours",t.totalHours.toFixed(2));
  setText("weeklyPay","£"+t.pay.toFixed(2));
  setText("weeklyCount",t.count);
@@ -847,6 +721,7 @@ function weeklyReport(){
  setText("weeklyOvertime",t.overtime.toFixed(2));
  setText("weeklyRegular",t.regular.toFixed(2));
 }
+
 function monthlyReport(){
  const month=document.getElementById("reportMonth").value;
  if(!/^\d{4}-\d{2}$/.test(month))return;
@@ -854,7 +729,7 @@ function monthlyReport(){
  const first=localDate(new Date(year,monthNumber-1,1));
  const last=localDate(new Date(year,monthNumber,1));
  const selected=shifts.filter(s=>s.date>=first&&s.date<last);
- const t=totals(selected);
+ const t=totals(selected,shifts);
  const firstWeek=mondayOf(new Date(year,monthNumber-1,1));
  const lastWeek=mondayOf(new Date(year,monthNumber,0));
  const weeks=Math.round((lastWeek-firstWeek)/(7*86400000))+1;
@@ -882,12 +757,10 @@ function saveSettings(){
  const rateText=document.getElementById("settingRate").value;
  const thresholdText=document.getElementById("settingThreshold").value;
  const multiplierText=document.getElementById("settingMultiplier").value;
- const rate=Number(rateText);
- const threshold=Number(thresholdText);
- const multiplier=Number(multiplierText);
+ const rate=Number(rateText),threshold=Number(thresholdText),multiplier=Number(multiplierText);
  if(rateText===""||thresholdText===""||multiplierText===""||
-  !Number.isFinite(rate)||!Number.isFinite(threshold)||
-  !Number.isFinite(multiplier)||rate<0||threshold<=0||multiplier<0){
+  !Number.isFinite(rate)||!Number.isFinite(threshold)||!Number.isFinite(multiplier)||
+  rate<0||threshold<=0||multiplier<0){
   alert("Please enter valid settings.");
   return;
  }
@@ -895,6 +768,7 @@ function saveSettings(){
  saveSettingsData();
  document.getElementById("rate").value=settings.rate;
  render();
+ if(!document.getElementById("plannerPage").classList.contains("hidden"))renderCalendar();
  alert("Settings saved successfully!");
 }
 
@@ -915,10 +789,10 @@ function render(){
   const title=document.createElement("b");
   title.textContent=formatDate(s.date)+" · "+h.toFixed(2)+" hours";
   const detail=document.createElement("small");
-  detail.textContent=
-   s.start+" - "+s.end+" · "+s.br+" min break · £"+pay.toFixed(2)+
+  detail.textContent=s.start+" - "+s.end+" · "+s.br+" min break · £"+pay.toFixed(2)+
    (allocation.overtime>0?" · "+allocation.overtime.toFixed(2)+" OT hours":"");
   info.append(title,document.createElement("br"),detail);
+
   const actions=document.createElement("div");
   actions.className="actions";
   const edit=document.createElement("button");
@@ -945,7 +819,7 @@ function render(){
  setText("regularHours",all.regular.toFixed(2));
  setText("averageHours",(all.count?all.totalHours/all.count:0).toFixed(2));
  setText("overtimeSummaryNote",
-  `Weekly overtime threshold: ${settings.threshold} hours · Overtime multiplier: ${settings.multiplier.toFixed(2)}x.`);
+  "Weekly overtime threshold: "+settings.threshold+" hours · Overtime multiplier: "+settings.multiplier.toFixed(2)+"x.");
  setText("backupCount",shifts.length);
  weeklyReport();
  monthlyReport();
@@ -979,37 +853,34 @@ async function restoreBackup(){
  try{
   const content=await file.text();
   const data=JSON.parse(content);
-  // Supports both the original backup format (an array)
-  // and the newer version 2 backup object.
   const imported=Array.isArray(data)?data:data.shifts;
   if(!Array.isArray(imported))throw new Error("Invalid backup format.");
+
   const clean=imported.map((s,index)=>{
    if(!s||!validDate(s.date)||!validTime(s.start)||!validTime(s.end))
     throw new Error("The backup contains an invalid shift.");
    const br=Number(s.br),rate=Number(s.rate);
-   if(!Number.isFinite(br)||!Number.isFinite(rate)||br<0||rate<0||
-    duration(s.start,s.end,br)<=0)
+   if(!Number.isFinite(br)||!Number.isFinite(rate)||br<0||rate<0||duration(s.start,s.end,br)<=0)
     throw new Error("The backup contains invalid hours or pay details.");
    return {...s,id:s.id??(Date.now()+index),br,rate};
   });
-  if(!confirm(`Restore ${clean.length} shifts? This will replace the shifts currently saved on this device.`))return;
+
+  if(!confirm("Restore "+clean.length+" shifts? This will replace the shifts currently saved on this device."))return;
+
   shifts=clean;
   if(!Array.isArray(data)&&data.settings){
    const next={...defaultSettings,...data.settings};
    if(Number.isFinite(Number(next.rate))&&Number(next.rate)>=0&&
     Number.isFinite(Number(next.threshold))&&Number(next.threshold)>0&&
     Number.isFinite(Number(next.multiplier))&&Number(next.multiplier)>=0){
-    settings={
-     rate:Number(next.rate),
-     threshold:Number(next.threshold),
-     multiplier:Number(next.multiplier)
-    };
+    settings={rate:Number(next.rate),threshold:Number(next.threshold),multiplier:Number(next.multiplier)};
     saveSettingsData();
    }
   }
   localStorage.setItem(STORAGE_KEY,JSON.stringify(shifts));
   fileInput.value="";
   render();
+  renderCalendar();
   alert("Backup restored successfully!");
  }catch(error){
   alert("Could not restore this file: "+error.message);
@@ -1017,10 +888,9 @@ async function restoreBackup(){
 }
 
 /* STARTUP */
-buildWeek();
 renderCalendar();
 render();
-</script>
 
+</script>
 </body>
 </html>
