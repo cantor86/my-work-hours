@@ -1,620 +1,1071 @@
 
+
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="manifest" href="manifest.json">
+
 <link rel="icon" href="icon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#101827">
+
+<meta name="theme-color" content="#0b1220">
+
 <title>My Work Hours</title>
 
 <style>
+
 *{box-sizing:border-box}
 
 body{
- margin:0;
- padding:16px;
- background:#0b1220;
- color:#f4f7fb;
- font-family:Arial,sans-serif;
+
+ margin:0;padding:16px;
+
+ background:#0b1220;color:#f4f7fb;
+
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+
 }
 
 main{max-width:600px;margin:auto}
 
-h1{
- color:#42b883;
- display:flex;
- align-items:center;
- gap:10px;
- font-size:28px;
-}
+h1{color:#42b883;font-size:30px;margin:8px 0}
 
-h2{
- display:flex;
- align-items:center;
- gap:10px;
- font-size:20px;
-}
+h2{font-size:19px;margin:0}
 
-h3{
- display:flex;
- align-items:center;
- gap:9px;
-}
+h3{font-size:15px}
 
-p{color:#a8b4c7}
+p{color:#94a3b8}
 
 .card{
- background:#151f30;
- padding:18px;
- border-radius:16px;
+
+ background:#151f30;padding:18px;
+
+ border:1px solid #26354a;border-radius:18px;
+
  margin:16px 0;
- border:1px solid #263449;
+
 }
 
-label{
- display:block;
- color:#a8b4c7;
- margin:12px 0 5px;
-}
+label{display:block;color:#a8b4c7;margin:12px 0 5px;font-size:14px}
 
 input{
- width:100%;
- padding:12px;
- border-radius:9px;
- border:1px solid #39465b;
- background:#0b1220;
- color:white;
- font-size:16px;
+
+ width:100%;padding:12px;border-radius:10px;
+
+ border:1px solid #39465b;background:#0b1220;
+
+ color:white;font-size:16px;outline:none;
+
 }
+
+input:focus{border-color:#42b883}
 
 button{
- padding:12px;
- border:0;
- border-radius:9px;
- background:#42b883;
- color:#062116;
- font-weight:bold;
- font-size:14px;
- margin-top:12px;
- width:100%;
- cursor:pointer;
- display:flex;
- align-items:center;
- justify-content:center;
- gap:9px;
- transition:opacity .2s;
+
+ padding:13px;border:0;border-radius:10px;
+
+ background:#42b883;color:#062116;font-weight:700;
+
+ font-size:14px;margin-top:12px;width:100%;
+
+ cursor:pointer;display:flex;align-items:center;
+
+ justify-content:center;gap:8px;
+
 }
 
-button:active{opacity:.75}
+button:active{transform:scale(.98)}
 
-.delete{
- background:#713b46;
- color:white;
- width:auto;
- margin:0;
+button svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+svg.icon{
+
+ width:27px;height:27px;stroke:white;fill:none;
+
+ stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+
 }
 
-.edit{
- background:#3478b8;
- color:white;
- width:auto;
- margin:0;
+.hidden{display:none!important}
+
+.header{
+
+ display:flex;align-items:center;justify-content:space-between;
+
+ margin-bottom:22px;
+
 }
 
-.actions{
- display:flex;
- gap:6px;
- flex-shrink:0;
+.brand{display:flex;align-items:center;gap:11px}
+
+.brand-icon{
+
+ width:46px;height:46px;background:#176b45;
+
+ border-radius:13px;display:flex;align-items:center;justify-content:center;
+
 }
 
-.entry{
- border-top:1px solid #39465b;
- padding:14px 0;
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:8px;
+.brand-icon svg{width:25px;height:25px}
+
+.subtitle{font-size:12px;color:#94a3b8;margin:3px 0}
+
+.home-intro{
+
+ background:linear-gradient(135deg,#173d32,#151f30);
+
+ border:1px solid #285b45;border-radius:18px;
+
+ padding:20px;margin:20px 0 24px;
+
 }
 
-small{color:#a8b4c7}
+.home-intro h2{font-size:20px;margin-bottom:7px}
 
-.stats{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:10px;
+.home-intro p{font-size:13px;margin:0}
+
+.menu-grid{
+
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+
+ gap:14px;
+
 }
+
+.menu-item{
+
+ background:#151f30;border:1px solid #26354a;
+
+ border-radius:17px;padding:18px 10px;
+
+ min-height:145px;display:flex;flex-direction:column;
+
+ align-items:center;justify-content:center;gap:11px;
+
+ cursor:pointer;transition:.15s;
+
+}
+
+.menu-item:active{transform:scale(.96);background:#1d3041}
+
+.menu-icon{
+
+ width:67px;height:67px;border-radius:16px;
+
+ background:linear-gradient(145deg,#239b65,#176b45);
+
+ display:flex;align-items:center;justify-content:center;
+
+ box-shadow:0 5px 14px rgba(35,155,101,.2);
+
+}
+
+.menu-icon svg{width:34px;height:34px}
+
+.menu-item strong{font-size:14px;color:#f4f7fb}
+
+.menu-item small{font-size:11px;color:#94a3b8;text-align:center}
+
+.home-footer{
+
+ text-align:center;color:#64748b;
+
+ font-size:11px;margin:25px 0 12px;
+
+}
+
+.topbar{
+
+ display:flex;align-items:center;gap:13px;
+
+ margin:8px 0 22px;
+
+}
+
+.home-button{
+
+ width:45px;height:45px;min-width:45px;
+
+ margin:0;padding:0;background:#176b45;color:white;
+
+ border-radius:12px;
+
+}
+
+.home-button svg{width:22px;height:22px}
+
+.topbar h2{font-size:19px}
+
+.topbar p{font-size:11px;margin:4px 0 0}
+
+.section-heading{
+
+ display:flex;align-items:center;gap:13px;margin-bottom:20px;
+
+}
+
+.icon-box{
+
+ width:46px;height:46px;min-width:46px;
+
+ background:#176b45;border-radius:13px;
+
+ display:flex;align-items:center;justify-content:center;
+
+}
+
+.icon-box svg{width:24px;height:24px}
+
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 
 .stat{
- background:#0b1220;
- padding:14px;
- border-radius:12px;
- border:1px solid #263449;
+
+ background:#0b1220;border:1px solid #26354a;
+
+ padding:13px;border-radius:13px;min-width:0;
+
 }
 
-.stat-label{
- display:flex;
- align-items:center;
- gap:8px;
- color:#a8b4c7;
- font-size:13px;
+.stat-top{display:flex;align-items:center;gap:7px;color:#a8b4c7;font-size:12px}
+
+.stat-icon{
+
+ width:28px;height:28px;background:#173c32;border-radius:8px;
+
+ display:flex;align-items:center;justify-content:center;color:#42b883;
+
 }
 
-.stat strong{
- display:block;
- font-size:23px;
- margin-top:10px;
- color:#42b883;
-}
+.stat-icon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
 
-.day{
- padding:12px 0;
- border-bottom:1px solid #39465b;
-}
+.stat strong{display:block;font-size:23px;margin-top:10px;color:#42b883;overflow-wrap:anywhere}
 
-.day-title{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:10px;
-}
+.report-heading{color:#42b883;margin:22px 0 8px}
 
-.day-title b{color:#42b883}
+.report-note{color:#8fa0b7;font-size:12px;line-height:1.6;margin-top:14px}
 
-.day-fields{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:8px;
-}
+.report-divider{border:0;border-top:1px solid #39465b;margin:22px 0}
 
-.day-fields label{font-size:13px}
+.day{padding:13px 0;border-bottom:1px solid #39465b}
 
-.day input[type="checkbox"]{
- width:20px;
- height:20px;
- accent-color:#42b883;
-}
+.day-title{display:flex;justify-content:space-between;align-items:center;gap:10px}
 
-.off-label{
- display:flex;
- align-items:center;
- gap:6px;
- margin:0;
- color:#a8b4c7;
- font-size:12px;
-}
+.day-title b{color:#42b883;font-size:14px}
+
+.day-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+.day-fields label{font-size:12px}
+
+.day-fields input{font-size:15px}
+
+.day input[type="checkbox"]{width:19px;height:19px;accent-color:#42b883}
+
+.off-label{display:flex;align-items:center;gap:6px;margin:0;color:#a8b4c7;font-size:11px;white-space:nowrap}
 
 .off-label input{width:18px}
 
 .disabled{opacity:.35}
 
-.report-heading{
- color:#42b883;
- margin-top:24px;
+.entry{
+
+ border-top:1px solid #39465b;padding:14px 0;
+
+ display:flex;justify-content:space-between;align-items:center;gap:8px;
+
 }
 
-.report-note{
- color:#a8b4c7;
- font-size:12px;
- margin-top:12px;
- line-height:1.5;
-}
+.entry b{font-size:14px}
 
-.icon{
- width:21px;
- height:21px;
- flex-shrink:0;
- stroke:currentColor;
- fill:none;
- stroke-width:1.8;
- stroke-linecap:round;
- stroke-linejoin:round;
-}
+small{color:#a8b4c7}
 
-h1 .icon{
- width:32px;
- height:32px;
-}
+.actions{display:flex;gap:7px;flex-shrink:0}
 
-h2 .icon{
- color:#42b883;
-}
+.actions button{width:auto;margin:0;padding:9px 10px;font-size:11px}
 
-.stat .icon{
- color:#42b883;
- width:20px;
- height:20px;
-}
+.edit{background:#28699e;color:white}
 
-.entry .icon{
- width:16px;
- height:16px;
- vertical-align:middle;
-}
+.delete{background:#713b46;color:white}
 
-button .icon{
- width:18px;
- height:18px;
-}
+.empty-history{text-align:center;padding:25px 10px;color:#8fa0b7}
 
-.section-subtitle{
- color:#a8b4c7;
- font-size:13px;
- margin-top:-8px;
- margin-bottom:18px;
-}
+.empty-history svg{width:35px;height:35px;stroke:#42b883}
 
 @media(max-width:380px){
- body{padding:10px}
+
+ body{padding:11px}
+
  .card{padding:14px}
+
+ .menu-item{min-height:135px;padding:13px 7px}
+
+ .menu-icon{width:60px;height:60px}
+
  .entry{align-items:flex-start}
+
  .actions{flex-direction:column}
- .actions button{
-  font-size:11px;
-  padding:9px;
- }
+
+ .actions button{font-size:10px;padding:8px}
+
  .stat strong{font-size:20px}
+
 }
+
 </style>
+
 </head>
 
 <body>
 
-<!-- ICON LIBRARY -->
-<svg xmlns="http://www.w3.org/2000/svg"
-style="display:none">
+<!-- ICONS -->
 
-<symbol id="i-work" viewBox="0 0 24 24">
-<rect x="3" y="7" width="18" height="14" rx="2"/>
-<path d="M8 7V4h8v3M3 12h18M10 12v2h4v-2"/>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+<symbol id="i-home" viewBox="0 0 24 24">
+
+<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1Z"/>
+
 </symbol>
 
 <symbol id="i-calendar" viewBox="0 0 24 24">
+
 <rect x="3" y="5" width="18" height="16" rx="2"/>
-<path d="M16 3v4M8 3v4M3 10h18"/>
+
+<path d="M16 3v4M8 3v4M3 10h18M8 14h2M14 14h2"/>
+
 </symbol>
 
 <symbol id="i-clock" viewBox="0 0 24 24">
-<circle cx="12" cy="12" r="9"/>
-<path d="M12 7v5l3 2"/>
-</symbol>
 
-<symbol id="i-wallet" viewBox="0 0 24 24">
-<rect x="2" y="5" width="20" height="15" rx="2"/>
-<path d="M2 9h20M16 15h2"/>
+<circle cx="12" cy="12" r="9"/>
+
+<path d="M12 7v5l3 2"/>
+
 </symbol>
 
 <symbol id="i-chart" viewBox="0 0 24 24">
-<path d="M3 3v18h18M8 16v-4M13 16V7M18 16V4"/>
+
+<path d="M3 3v18h18M7 14l4-4 4 3 6-7"/>
+
 </symbol>
 
-<symbol id="i-list" viewBox="0 0 24 24">
-<path d="M9 6h12M9 12h12M9 18h12M3 6h.01M3 12h.01M3 18h.01"/>
+<symbol id="i-money" viewBox="0 0 24 24">
+
+<rect x="2" y="5" width="20" height="14" rx="2"/>
+
+<circle cx="12" cy="12" r="3"/>
+
+<path d="M6 9h.01M18 15h.01"/>
+
 </symbol>
 
-<symbol id="i-plus" viewBox="0 0 24 24">
-<path d="M12 5v14M5 12h14"/>
+<symbol id="i-users" viewBox="0 0 24 24">
+
+<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+
+<circle cx="9" cy="7" r="4"/>
+
+<path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+
 </symbol>
 
-<symbol id="i-save" viewBox="0 0 24 24">
-<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
-<path d="M17 21v-8H7v8M7 3v5h8"/>
+<symbol id="i-history" viewBox="0 0 24 24">
+
+<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/>
+
+<path d="M3 3v5h5M12 7v5l3 2"/>
+
 </symbol>
 
 <symbol id="i-download" viewBox="0 0 24 24">
-<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+
+<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+
+<path d="m7 10 5 5 5-5M12 15V3"/>
+
+</symbol>
+
+<symbol id="i-save" viewBox="0 0 24 24">
+
+<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/>
+
+<path d="M17 21v-8H7v8M7 3v5h9"/>
+
+</symbol>
+
+<symbol id="i-plus" viewBox="0 0 24 24">
+
+<path d="M12 5v14M5 12h14"/>
+
 </symbol>
 
 <symbol id="i-edit" viewBox="0 0 24 24">
-<path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4z"/>
+
+<path d="m16 4 4 4M4 20l4-.8L20 7.2 16.8 4 4.8 16Z"/>
+
 </symbol>
 
-<symbol id="i-delete" viewBox="0 0 24 24">
-<path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v5M14 11v5"/>
+<symbol id="i-trash" viewBox="0 0 24 24">
+
+<path d="M3 6h18M8 6V4h8v2m3 0-1 14H6L5 6m4 4v6m6-6v6"/>
+
 </symbol>
 
-<symbol id="i-calendar-check" viewBox="0 0 24 24">
-<rect x="3" y="5" width="18" height="16" rx="2"/>
-<path d="M16 3v4M8 3v4M3 10h18M8 15l2 2 5-5"/>
-</symbol>
+<symbol id="i-file" viewBox="0 0 24 24">
 
-<symbol id="i-trending" viewBox="0 0 24 24">
-<path d="m3 17 6-6 4 4 8-9M15 6h6v6"/>
-</symbol>
+<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/>
 
-<symbol id="i-coffee" viewBox="0 0 24 24">
-<path d="M4 8h14v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4zM18 10h2a2 2 0 0 1 0 4h-2M8 3v2M12 3v2M16 3v2"/>
+<path d="M14 2v6h6M8 13h8M8 17h8"/>
+
 </symbol>
 
 </svg>
 
 <main>
 
-<h1>
-<svg class="icon"><use href="#i-work"/></svg>
-My Work Hours
-</h1>
+<!-- HOME DASHBOARD -->
 
-<p>Track your shifts and earnings</p>
+<section id="homePage">
 
-<!-- WEEKLY PLANNER -->
+ <div class="header">
 
-<div class="card">
+  <div class="brand">
 
-<h2>
-<svg class="icon"><use href="#i-calendar"/></svg>
-Weekly Shift Planner
-</h2>
+   <div class="brand-icon">
 
-<p class="section-subtitle">
-Plan your working week
-</p>
+    <svg class="icon"><use href="#i-clock"/></svg>
 
-<label>Monday – Week starting</label>
-<input id="weekStart" type="date">
+   </div>
 
-<div id="weekDays"></div>
+   <div>
 
-<button onclick="saveWeek()">
-<svg class="icon"><use href="#i-save"/></svg>
-SAVE WEEK
-</button>
+    <h1>My Work Hours</h1>
 
-</div>
+    <p class="subtitle">PERSONAL WORK DASHBOARD</p>
 
-<!-- ADD SHIFT -->
+   </div>
 
-<div class="card">
+  </div>
 
-<h2>
-<svg class="icon"><use href="#i-plus"/></svg>
-Add a shift
-</h2>
+ </div>
 
-<p class="section-subtitle">
-Enter your working hours
-</p>
+ <div class="home-intro">
 
-<label>Date</label>
-<input id="date" type="date">
+  <h2>Welcome back!</h2>
 
-<label>Start time</label>
-<input id="start" type="time" value="09:00">
+  <p>Manage your working hours and earnings in one place.</p>
 
-<label>Finish time</label>
-<input id="end" type="time" value="17:00">
+ </div>
 
-<label>Unpaid break (minutes)</label>
-<input id="break" type="number" value="30" min="0">
+ <div class="menu-grid">
 
-<label>Hourly rate (£)</label>
-<input id="rate" type="number" value="14.50" min="0" step="0.01">
+  <div class="menu-item" onclick="showPage('plannerPage')">
 
-<button onclick="addShift()">
-<svg class="icon"><use href="#i-plus"/></svg>
-ADD SHIFT
-</button>
+   <div class="menu-icon">
 
-</div>
+    <svg class="icon"><use href="#i-calendar"/></svg>
 
-<!-- MAIN SUMMARY -->
+   </div>
 
-<div class="card">
+   <strong>Weekly Planner</strong>
 
-<h2>
-<svg class="icon"><use href="#i-chart"/></svg>
-My Summary
-</h2>
+   <small>Plan your shifts</small>
 
-<div class="stats">
+  </div>
 
-<div class="stat">
-<div class="stat-label">
-<svg class="icon"><use href="#i-clock"/></svg>
-Total hours
-</div>
-<strong id="hours">0.00</strong>
-</div>
+  <div class="menu-item" onclick="showPage('addPage')">
 
-<div class="stat">
-<div class="stat-label">
-<svg class="icon"><use href="#i-wallet"/></svg>
-Gross earnings
-</div>
-<strong id="earnings">£0.00</strong>
-</div>
+   <div class="menu-icon">
 
-<div class="stat">
-<div class="stat-label">
-<svg class="icon"><use href="#i-calendar-check"/></svg>
-Total shifts
-</div>
-<strong id="count">0</strong>
-</div>
+    <svg class="icon"><use href="#i-clock"/></svg>
 
-</div>
-</div>
+   </div>
 
-<!-- REPORTS -->
+   <strong>Add Shift</strong>
 
-<div class="card">
+   <small>Record working hours</small>
 
-<h2>
-<svg class="icon"><use href="#i-chart"/></svg>
-Reports & Statistics
-</h2>
+  </div>
 
-<h3 class="report-heading">
-<svg class="icon"><use href="#i-calendar"/></svg>
-Weekly Report
-</h3>
+  <div class="menu-item" onclick="showPage('summaryPage')">
 
-<label>Select week (Monday)</label>
-<input id="reportWeek" type="date">
+   <div class="menu-icon">
 
-<div class="stats">
+    <svg class="icon"><use href="#i-chart"/></svg>
 
-<div class="stat">
-<div class="stat-label">
-<svg class="icon"><use href="#i-clock"/></svg>
-Weekly hours
-</div>
-<strong id="weeklyHours">0.00</strong>
-</div>
+   </div>
 
-<div class="stat">
-<div class="stat-label">
-<svg class="icon"><use href="#i-wallet"/></svg>
-Weekly earnings
-</div>
-<strong id="weeklyPay">£0.00</strong>
-</div>
+   <strong>My Summary</strong>
 
-<div class="stat">
-<div class="stat-label">
-<svg class="icon"><use href="#i-calendar-check"/></svg>
-Weekly shifts
-</div>
-<strong id="weeklyCount">0</strong>
-</div>
+   <small>Hours and earnings</small>
 
-<div class="stat">
-<div class="stat-label">
-<svg class="icon"><use href="#i-trending"/></svg>
-Average hours / shift
-</div>
-<strong id="weeklyAverage">0.00</strong>
-</div>
+  </div>
 
-</div>
+  <div class="menu-item" onclick="showPage('reportsPage')">
 
-<h3 class="report-heading">
-<svg class="icon"><use href="#i-calendar"/></svg>
-Monthly Report
-</h3>
+   <div class="menu-icon">
 
-<label>Select month</label>
-<input id="reportMonth" type="month">
+    <svg class="icon"><use href="#i-money"/></svg>
 
-<div class="stats">
+   </div>
 
-<div class="stat">
-<div class="stat-label">
-<svg class="icon"><use href="#i-clock"/></svg>
-Monthly hours
-</div>
-<strong id="monthlyHours">0.00</strong>
-</div>
+   <strong>Reports</strong>
 
-<div class="stat">
-<div class="stat-label">
-<svg class="icon"><use href="#i-wallet"/></svg>
-Monthly earnings
-</div>
-<strong id="monthlyPay">£0.00</strong>
-</div>
+   <small>Weekly and monthly</small>
 
-<div class="stat">
-<div class="stat-label">
-<svg class="icon"><use href="#i-calendar-check"/></svg>
-Monthly shifts
-</div>
-<strong id="monthlyCount">0</strong>
-</div>
+  </div>
 
-<div class="stat">
-<div class="stat-label">
-<svg class="icon"><use href="#i-trending"/></svg>
-Average hours / week
-</div>
-<strong id="monthlyAverage">0.00</strong>
-</div>
+  <div class="menu-item" onclick="showPage('historyPage')">
 
-</div>
+   <div class="menu-icon">
 
-<p class="report-note">
-Reports are calculated automatically using your saved shifts.
-Monthly weekly average uses the actual number of calendar weeks covered by the selected month.
-</p>
+    <svg class="icon"><use href="#i-history"/></svg>
 
-</div>
+   </div>
 
-<!-- SHIFT HISTORY -->
+   <strong>Shift History</strong>
 
-<div class="card">
+   <small>Manage saved shifts</small>
 
-<h2>
-<svg class="icon"><use href="#i-list"/></svg>
-Shift History
-</h2>
+  </div>
 
-<div id="history"></div>
+  <div class="menu-item" onclick="backup()">
 
-<button onclick="backup()">
-<svg class="icon"><use href="#i-download"/></svg>
-EXPORT BACKUP
-</button>
+   <div class="menu-icon">
 
-</div>
+    <svg class="icon"><use href="#i-download"/></svg>
+
+   </div>
+
+   <strong>Backup</strong>
+
+   <small>Export your data</small>
+
+  </div>
+
+ </div>
+
+ <div class="home-footer">
+
+  MY WORK HOURS · PROFESSIONAL EDITION
+
+ </div>
+
+</section>
+
+<!-- WEEKLY PLANNER PAGE -->
+
+<section id="plannerPage" class="hidden">
+
+ <div class="topbar">
+
+  <button class="home-button" onclick="showPage('homePage')">
+
+   <svg><use href="#i-home"/></svg>
+
+  </button>
+
+  <div>
+
+   <h2>Weekly Planner</h2>
+
+   <p>Plan your working week</p>
+
+  </div>
+
+ </div>
+
+ <div class="card">
+
+  <div class="section-heading">
+
+   <div class="icon-box"><svg class="icon"><use href="#i-calendar"/></svg></div>
+
+   <h2>Weekly Shift Planner</h2>
+
+  </div>
+
+  <label>Monday – Week starting</label>
+
+  <input id="weekStart" type="date">
+
+  <div id="weekDays"></div>
+
+  <button onclick="saveWeek()">
+
+   <svg><use href="#i-save"/></svg> SAVE WEEK
+
+  </button>
+
+ </div>
+
+</section>
+
+<!-- ADD SHIFT PAGE -->
+
+<section id="addPage" class="hidden">
+
+ <div class="topbar">
+
+  <button class="home-button" onclick="showPage('homePage')">
+
+   <svg><use href="#i-home"/></svg>
+
+  </button>
+
+  <div>
+
+   <h2>Add Shift</h2>
+
+   <p>Record your working hours</p>
+
+  </div>
+
+ </div>
+
+ <div class="card">
+
+  <div class="section-heading">
+
+   <div class="icon-box"><svg class="icon"><use href="#i-clock"/></svg></div>
+
+   <h2>Add a Shift</h2>
+
+  </div>
+
+  <label>Date</label>
+
+  <input id="date" type="date">
+
+  <label>Start time</label>
+
+  <input id="start" type="time" value="09:00">
+
+  <label>Finish time</label>
+
+  <input id="end" type="time" value="17:00">
+
+  <label>Unpaid break (minutes)</label>
+
+  <input id="break" type="number" value="30" min="0">
+
+  <label>Hourly rate (£)</label>
+
+  <input id="rate" type="number" value="14.50" min="0" step="0.01">
+
+  <button onclick="addShift()">
+
+   <svg><use href="#i-plus"/></svg> ADD SHIFT
+
+  </button>
+
+ </div>
+
+</section>
+
+<!-- SUMMARY PAGE -->
+
+<section id="summaryPage" class="hidden">
+
+ <div class="topbar">
+
+  <button class="home-button" onclick="showPage('homePage')">
+
+   <svg><use href="#i-home"/></svg>
+
+  </button>
+
+  <div>
+
+   <h2>My Summary</h2>
+
+   <p>Your overall work statistics</p>
+
+  </div>
+
+ </div>
+
+ <div class="card">
+
+  <div class="section-heading">
+
+   <div class="icon-box"><svg class="icon"><use href="#i-chart"/></svg></div>
+
+   <h2>My Summary</h2>
+
+  </div>
+
+  <div class="stats">
+
+   <div class="stat">
+
+    <div class="stat-top">
+
+     <div class="stat-icon"><svg><use href="#i-clock"/></svg></div>
+
+     Total hours
+
+    </div>
+
+    <strong id="hours">0.00</strong>
+
+   </div>
+
+   <div class="stat">
+
+    <div class="stat-top">
+
+     <div class="stat-icon"><svg><use href="#i-money"/></svg></div>
+
+     Gross earnings
+
+    </div>
+
+    <strong id="earnings">£0.00</strong>
+
+   </div>
+
+   <div class="stat">
+
+    <div class="stat-top">
+
+     <div class="stat-icon"><svg><use href="#i-users"/></svg></div>
+
+     Total shifts
+
+    </div>
+
+    <strong id="count">0</strong>
+
+   </div>
+
+  </div>
+
+ </div>
+
+</section>
+
+<!-- REPORTS PAGE -->
+
+<section id="reportsPage" class="hidden">
+
+ <div class="topbar">
+
+  <button class="home-button" onclick="showPage('homePage')">
+
+   <svg><use href="#i-home"/></svg>
+
+  </button>
+
+  <div>
+
+   <h2>Reports & Statistics</h2>
+
+   <p>Analyse your working hours and pay</p>
+
+  </div>
+
+ </div>
+
+ <div class="card">
+
+  <h3 class="report-heading">WEEKLY REPORT</h3>
+
+  <label>Select week (Monday)</label>
+
+  <input id="reportWeek" type="date">
+
+  <div class="stats">
+
+   <div class="stat">
+
+    <div class="stat-top">
+
+     <div class="stat-icon"><svg><use href="#i-clock"/></svg></div>
+
+     Weekly hours
+
+    </div>
+
+    <strong id="weeklyHours">0.00</strong>
+
+   </div>
+
+   <div class="stat">
+
+    <div class="stat-top">
+
+     <div class="stat-icon"><svg><use href="#i-money"/></svg></div>
+
+     Weekly earnings
+
+    </div>
+
+    <strong id="weeklyPay">£0.00</strong>
+
+   </div>
+
+   <div class="stat">
+
+    <div class="stat-top">
+
+     <div class="stat-icon"><svg><use href="#i-calendar"/></svg></div>
+
+     Weekly shifts
+
+    </div>
+
+    <strong id="weeklyCount">0</strong>
+
+   </div>
+
+   <div class="stat">
+
+    <div class="stat-top">
+
+     <div class="stat-icon"><svg><use href="#i-chart"/></svg></div>
+
+     Average hours / shift
+
+    </div>
+
+    <strong id="weeklyAverage">0.00</strong>
+
+   </div>
+
+  </div>
+
+  <hr class="report-divider">
+
+  <h3 class="report-heading">MONTHLY REPORT</h3>
+
+  <label>Select month</label>
+
+  <input id="reportMonth" type="month">
+
+  <div class="stats">
+
+   <div class="stat">
+
+    <div class="stat-top">
+
+     <div class="stat-icon"><svg><use href="#i-clock"/></svg></div>
+
+     Monthly hours
+
+    </div>
+
+    <strong id="monthlyHours">0.00</strong>
+
+   </div>
+
+   <div class="stat">
+
+    <div class="stat-top">
+
+     <div class="stat-icon"><svg><use href="#i-money"/></svg></div>
+
+     Monthly earnings
+
+    </div>
+
+    <strong id="monthlyPay">£0.00</strong>
+
+   </div>
+
+   <div class="stat">
+
+    <div class="stat-top">
+
+     <div class="stat-icon"><svg><use href="#i-calendar"/></svg></div>
+
+     Monthly shifts
+
+    </div>
+
+    <strong id="monthlyCount">0</strong>
+
+   </div>
+
+   <div class="stat">
+
+    <div class="stat-top">
+
+     <div class="stat-icon"><svg><use href="#i-chart"/></svg></div>
+
+     Average hours / week
+
+    </div>
+
+    <strong id="monthlyAverage">0.00</strong>
+
+   </div>
+
+  </div>
+
+  <p class="report-note">
+
+   Reports are calculated automatically using your saved shifts.
+
+   Monthly weekly average uses the actual number of calendar weeks
+
+   covered by the selected month.
+
+  </p>
+
+ </div>
+
+</section>
+
+<!-- HISTORY PAGE -->
+
+<section id="historyPage" class="hidden">
+
+ <div class="topbar">
+
+  <button class="home-button" onclick="showPage('homePage')">
+
+   <svg><use href="#i-home"/></svg>
+
+  </button>
+
+  <div>
+
+   <h2>Shift History</h2>
+
+   <p>View and manage saved shifts</p>
+
+  </div>
+
+ </div>
+
+ <div class="card">
+
+  <div class="section-heading">
+
+   <div class="icon-box"><svg class="icon"><use href="#i-history"/></svg></div>
+
+   <h2>Shift History</h2>
+
+  </div>
+
+  <div id="history"></div>
+
+  <button onclick="backup()">
+
+   <svg><use href="#i-download"/></svg> EXPORT BACKUP
+
+  </button>
+
+ </div>
+
+</section>
 
 </main>
 
 <script>
 
+/* PAGE NAVIGATION */
+
+function showPage(pageId){
+
+ document.querySelectorAll("main > section").forEach(section=>{
+
+  section.classList.add("hidden");
+
+ });
+
+ document.getElementById(pageId).classList.remove("hidden");
+
+ window.scrollTo({top:0,behavior:"instant"});
+
+ render();
+
+}
+
 /* LOAD SAVED DATA */
 
-let shifts=JSON.parse(
- localStorage.getItem("myShifts")||"[]"
-);
+let shifts=JSON.parse(localStorage.getItem("myShifts")||"[]");
 
 /* DATE FUNCTIONS */
 
 function localDate(d){
+
  return d.getFullYear()+"-"+
+
  String(d.getMonth()+1).padStart(2,"0")+"-"+
+
  String(d.getDate()).padStart(2,"0");
+
 }
 
 function mondayOf(d){
+
  let x=new Date(d.getFullYear(),d.getMonth(),d.getDate());
+
  x.setDate(x.getDate()-(x.getDay()+6)%7);
+
  return x;
+
 }
 
 function dateFromMonday(value,offset){
+
  let d=new Date(value+"T12:00:00");
+
  d.setDate(d.getDate()+offset);
+
  return localDate(d);
+
 }
 
 function validDate(d){
+
  if(!/^\d{4}-\d{2}-\d{2}$/.test(d))return false;
+
  let x=new Date(d+"T12:00:00");
+
  return !isNaN(x.getTime())&&localDate(x)===d;
+
 }
 
 function validTime(t){
+
  if(!/^\d{2}:\d{2}$/.test(t))return false;
+
  let [h,m]=t.split(":").map(Number);
+
  return h>=0&&h<=23&&m>=0&&m<=59;
+
 }
 
 /* INITIAL DATES */
 
 let today=new Date();
+
 let todayString=localDate(today);
+
 let currentMonday=localDate(mondayOf(today));
 
 document.getElementById("date").value=todayString;
+
 document.getElementById("weekStart").value=currentMonday;
+
 document.getElementById("reportWeek").value=currentMonday;
-document.getElementById("reportMonth").value=
- todayString.substring(0,7);
+
+document.getElementById("reportMonth").value=todayString.substring(0,7);
 
 const dayNames=[
+
  "Monday","Tuesday","Wednesday","Thursday",
+
  "Friday","Saturday","Sunday"
+
 ];
 
 /* WEEKLY PLANNER */
@@ -622,60 +1073,93 @@ const dayNames=[
 function buildWeek(){
 
  let monday=document.getElementById("weekStart").value;
+
  if(!validDate(monday))return;
 
  let container=document.getElementById("weekDays");
+
  container.innerHTML="";
 
  dayNames.forEach((name,i)=>{
 
   let date=dateFromMonday(monday,i);
+
   let day=document.createElement("div");
+
   day.className="day";
 
   day.innerHTML=`
+
    <div class="day-title">
+
     <b>${name} · ${date}</b>
+
     <label class="off-label">
+
      <input type="checkbox" id="off${i}"
+
       onchange="toggleDay(${i})">
+
      DAY OFF
+
     </label>
+
    </div>
 
    <div class="day-fields" id="fields${i}">
+
     <div>
+
      <label>Start time</label>
+
      <input type="time" id="start${i}" value="09:00">
+
     </div>
+
     <div>
+
      <label>Finish time</label>
+
      <input type="time" id="end${i}" value="17:00">
+
     </div>
+
     <div>
+
      <label>Unpaid break (minutes)</label>
+
      <input type="number" id="break${i}" value="30" min="0">
+
     </div>
+
    </div>
+
   `;
 
   container.append(day);
+
  });
+
 }
 
 function toggleDay(i){
 
  let off=document.getElementById("off"+i).checked;
+
  let fields=document.getElementById("fields"+i);
 
  fields.classList.toggle("disabled",off);
 
  fields.querySelectorAll("input").forEach(x=>{
+
   x.disabled=off;
+
  });
+
 }
 
 document.getElementById("weekStart")
+
  .addEventListener("change",buildWeek);
 
 buildWeek();
@@ -683,8 +1167,11 @@ buildWeek();
 /* SAVE DATA */
 
 function save(){
+
  localStorage.setItem("myShifts",JSON.stringify(shifts));
+
  render();
+
 }
 
 /* HOURS CALCULATION */
@@ -692,6 +1179,7 @@ function save(){
 function duration(start,end,br){
 
  let a=start.split(":").map(Number);
+
  let b=end.split(":").map(Number);
 
  let m=b[0]*60+b[1]-a[0]*60-a[1];
@@ -699,10 +1187,13 @@ function duration(start,end,br){
  if(m<0)m+=1440;
 
  return m-br;
+
 }
 
 function hours(s){
+
  return duration(s.start,s.end,Number(s.br))/60;
+
 }
 
 /* ADD SHIFT */
@@ -710,35 +1201,53 @@ function hours(s){
 function addShift(){
 
  let date=document.getElementById("date").value;
+
  let start=document.getElementById("start").value;
+
  let end=document.getElementById("end").value;
+
  let brText=document.getElementById("break").value;
+
  let rateText=document.getElementById("rate").value;
 
  let br=Number(brText);
+
  let rate=Number(rateText);
 
  if(!validDate(date)||!validTime(start)||!validTime(end)||
+
     brText===""||rateText===""||
+
     !Number.isFinite(br)||!Number.isFinite(rate)||
+
     br<0||rate<0){
+
   alert("Please complete all fields correctly.");
+
   return;
+
  }
 
  if(duration(start,end,br)<=0){
+
   alert("Please check your shift and break.");
+
   return;
+
  }
 
  shifts.push({
+
   id:Date.now(),
+
   date,start,end,br,rate
+
  });
 
  save();
 
  alert("Shift saved!");
+
 }
 
 /* SAVE WEEK */
@@ -746,16 +1255,23 @@ function addShift(){
 function saveWeek(){
 
  let monday=document.getElementById("weekStart").value;
+
  let rateText=document.getElementById("rate").value;
+
  let rate=Number(rateText);
 
  if(!validDate(monday)||rateText===""||
+
     !Number.isFinite(rate)||rate<0){
+
   alert("Please enter a valid week and hourly rate.");
+
   return;
+
  }
 
  let newShifts=[];
+
  let skipped=0;
 
  for(let i=0;i<7;i++){
@@ -763,34 +1279,53 @@ function saveWeek(){
   if(document.getElementById("off"+i).checked)continue;
 
   let date=dateFromMonday(monday,i);
+
   let start=document.getElementById("start"+i).value;
+
   let end=document.getElementById("end"+i).value;
+
   let brText=document.getElementById("break"+i).value;
+
   let br=Number(brText);
 
   if(!validTime(start)||!validTime(end)||
+
      brText===""||!Number.isFinite(br)||
+
      br<0||duration(start,end,br)<=0){
 
    alert("Please check the times and breaks for "+
+
     dayNames[i]+". Use DAY OFF if you are not working.");
+
    return;
+
   }
 
   if(shifts.some(s=>s.date===date)){
+
    skipped++;
+
    continue;
+
   }
 
   newShifts.push({
+
    id:Date.now()+i,
+
    date,start,end,br,rate
+
   });
+
  }
 
  if(newShifts.length===0){
+
   alert("No new shifts to save. Check whether these dates already exist in Shift History.");
+
   return;
+
  }
 
  shifts.push(...newShifts);
@@ -798,7 +1333,9 @@ function saveWeek(){
  save();
 
  alert(newShifts.length+" shifts saved successfully!"+
+
  (skipped?" "+skipped+" existing date(s) skipped to avoid duplicates.":""));
+
 }
 
 /* EDIT SHIFT */
@@ -806,46 +1343,63 @@ function saveWeek(){
 function editShift(id){
 
  let s=shifts.find(x=>x.id===id);
+
  if(!s)return;
 
  let date=prompt("Date (YYYY-MM-DD):",s.date);
+
  if(date===null)return;
 
  let start=prompt("Start time (HH:MM):",s.start);
+
  if(start===null)return;
 
  let end=prompt("Finish time (HH:MM):",s.end);
+
  if(end===null)return;
 
  let brText=prompt("Unpaid break (minutes):",s.br);
+
  if(brText===null)return;
 
  let rateText=prompt("Hourly rate (£):",s.rate);
+
  if(rateText===null)return;
 
  let br=Number(brText);
+
  let rate=Number(rateText);
 
  if(!validDate(date)||!validTime(start)||!validTime(end)||
+
     brText.trim()===""||rateText.trim()===""||
+
     !Number.isFinite(br)||!Number.isFinite(rate)||
+
     br<0||rate<0||duration(start,end,br)<=0){
 
   alert("Please check the information entered.");
+
   return;
+
  }
 
  let index=shifts.findIndex(x=>x.id===id);
+
  if(index===-1)return;
 
  shifts[index]={
+
   ...shifts[index],
+
   date,start,end,br,rate
+
  };
 
  save();
 
  alert("Shift updated successfully!");
+
 }
 
 /* DELETE SHIFT */
@@ -857,6 +1411,7 @@ function deleteShift(id){
  shifts=shifts.filter(x=>x.id!==id);
 
  save();
+
 }
 
 /* WEEKLY REPORT */
@@ -868,37 +1423,45 @@ function weeklyReport(){
  if(!validDate(monday))return;
 
  let start=mondayOf(new Date(monday+"T12:00:00"));
+
  let first=localDate(start);
 
  let end=new Date(start);
+
  end.setDate(end.getDate()+7);
 
  let endString=localDate(end);
 
  let selected=shifts.filter(s=>
+
   s.date>=first&&s.date<endString
+
  );
 
  let total=0;
+
  let pay=0;
 
  selected.forEach(s=>{
+
   let h=hours(s);
+
   total+=h;
+
   pay+=h*Number(s.rate);
+
  });
 
- document.getElementById("weeklyHours").textContent=
-  total.toFixed(2);
+ document.getElementById("weeklyHours").textContent=total.toFixed(2);
 
- document.getElementById("weeklyPay").textContent=
-  "£"+pay.toFixed(2);
+ document.getElementById("weeklyPay").textContent="£"+pay.toFixed(2);
 
- document.getElementById("weeklyCount").textContent=
-  selected.length;
+ document.getElementById("weeklyCount").textContent=selected.length;
 
  document.getElementById("weeklyAverage").textContent=
+
   (selected.length?total/selected.length:0).toFixed(2);
+
 }
 
 /* MONTHLY REPORT */
@@ -910,58 +1473,73 @@ function monthlyReport(){
  if(!/^\d{4}-\d{2}$/.test(month))return;
 
  let parts=month.split("-").map(Number);
+
  let year=parts[0];
+
  let monthNumber=parts[1];
 
  if(monthNumber<1||monthNumber>12)return;
 
  let firstDate=new Date(year,monthNumber-1,1);
+
  let nextMonth=new Date(year,monthNumber,1);
 
  let first=localDate(firstDate);
+
  let last=localDate(nextMonth);
 
  let selected=shifts.filter(s=>
+
   s.date>=first&&s.date<last
+
  );
 
  let total=0;
+
  let pay=0;
 
  selected.forEach(s=>{
+
   let h=hours(s);
+
   total+=h;
+
   pay+=h*Number(s.rate);
+
  });
 
  let daysInMonth=new Date(year,monthNumber,0).getDate();
 
  let firstWeek=mondayOf(firstDate);
+
  let lastDay=new Date(year,monthNumber-1,daysInMonth);
+
  let lastWeek=mondayOf(lastDay);
 
  let calendarWeeks=
+
   Math.round((lastWeek-firstWeek)/(7*24*60*60*1000))+1;
 
- document.getElementById("monthlyHours").textContent=
-  total.toFixed(2);
+ document.getElementById("monthlyHours").textContent=total.toFixed(2);
 
- document.getElementById("monthlyPay").textContent=
-  "£"+pay.toFixed(2);
+ document.getElementById("monthlyPay").textContent="£"+pay.toFixed(2);
 
- document.getElementById("monthlyCount").textContent=
-  selected.length;
+ document.getElementById("monthlyCount").textContent=selected.length;
 
  document.getElementById("monthlyAverage").textContent=
+
   (calendarWeeks?total/calendarWeeks:0).toFixed(2);
+
 }
 
 /* UPDATE REPORTS */
 
 document.getElementById("reportWeek")
+
  .addEventListener("change",weeklyReport);
 
 document.getElementById("reportMonth")
+
  .addEventListener("change",monthlyReport);
 
 /* DISPLAY HISTORY AND TOTALS */
@@ -969,9 +1547,11 @@ document.getElementById("reportMonth")
 function render(){
 
  let total=0;
+
  let pay=0;
 
  let box=document.getElementById("history");
+
  box.innerHTML="";
 
  shifts.sort((a,b)=>b.date.localeCompare(a.date));
@@ -981,58 +1561,81 @@ function render(){
   let h=hours(s);
 
   total+=h;
+
   pay+=h*Number(s.rate);
 
   let row=document.createElement("div");
+
   row.className="entry";
 
   let info=document.createElement("div");
 
   let title=document.createElement("b");
+
   title.textContent=s.date+" · "+h.toFixed(2)+" hours";
 
   let detail=document.createElement("small");
+
   detail.textContent=
+
    s.start+" - "+s.end+
+
    " · "+s.br+" min break · £"+(h*Number(s.rate)).toFixed(2);
 
   info.append(title,document.createElement("br"),detail);
 
   let actions=document.createElement("div");
+
   actions.className="actions";
 
   let edit=document.createElement("button");
+
   edit.className="edit";
-  edit.innerHTML=
-   '<svg class="icon"><use href="#i-edit"/></svg> EDIT';
+
+  edit.innerHTML='<svg><use href="#i-edit"/></svg> EDIT';
+
   edit.onclick=()=>editShift(s.id);
 
   let del=document.createElement("button");
+
   del.className="delete";
-  del.innerHTML=
-   '<svg class="icon"><use href="#i-delete"/></svg> DELETE';
+
+  del.innerHTML='<svg><use href="#i-trash"/></svg> DELETE';
+
   del.onclick=()=>deleteShift(s.id);
 
   actions.append(edit,del);
+
   row.append(info,actions);
+
   box.append(row);
+
  });
 
  if(shifts.length===0){
-  box.textContent="No shifts recorded yet.";
+
+  box.innerHTML=`
+
+   <div class="empty-history">
+
+    <svg><use href="#i-file"/></svg>
+
+    <div>No shifts recorded yet.</div>
+
+   </div>`;
+
  }
 
- document.getElementById("hours").textContent=
-  total.toFixed(2);
+ document.getElementById("hours").textContent=total.toFixed(2);
 
- document.getElementById("earnings").textContent=
-  "£"+pay.toFixed(2);
+ document.getElementById("earnings").textContent="£"+pay.toFixed(2);
 
- document.getElementById("count").textContent=
-  shifts.length;
+ document.getElementById("count").textContent=shifts.length;
 
  weeklyReport();
+
  monthlyReport();
+
 }
 
 /* EXPORT BACKUP */
@@ -1040,21 +1643,29 @@ function render(){
 function backup(){
 
  let blob=new Blob(
+
   [JSON.stringify(shifts,null,2)],
+
   {type:"application/json"}
+
  );
 
  let url=URL.createObjectURL(blob);
 
  let a=document.createElement("a");
+
  a.href=url;
+
  a.download="my-work-hours-backup.json";
 
  a.click();
 
  setTimeout(()=>{
+
   URL.revokeObjectURL(url);
+
  },1000);
+
 }
 
 /* INITIAL DISPLAY */
@@ -1070,8 +1681,11 @@ if("serviceWorker" in navigator){
   navigator.serviceWorker.register("./sw.js");
 
  });
+
 }
 
 </script>
+
 </body>
+
 </html>
