@@ -19,6 +19,8 @@ label{display:block;color:#a8b4c7;margin:12px 0 5px}
 input{width:100%;padding:12px;border-radius:9px;border:1px solid #39465b;background:#0b1220;color:white;font-size:16px}
 button{padding:12px;border:0;border-radius:9px;background:#42b883;color:#062116;font-weight:bold;font-size:16px;margin-top:12px;width:100%}
 .delete{background:#713b46;color:white;width:auto;margin:0}
+.edit{background:#3478b8;color:white;width:auto;margin:0}
+.actions{display:flex;gap:6px;flex-shrink:0}
 .entry{border-top:1px solid #39465b;padding:12px 0;display:flex;justify-content:space-between;align-items:center;gap:8px}
 small{color:#a8b4c7}
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
@@ -33,11 +35,17 @@ small{color:#a8b4c7}
 .off-label{display:flex;align-items:center;gap:6px;margin:0;color:#a8b4c7}
 .off-label input{width:18px}
 .disabled{opacity:.35}
+@media(max-width:380px){
+ .entry{align-items:flex-start}
+ .actions{flex-direction:column}
+ .actions button{font-size:13px;padding:9px}
+}
 </style>
 </head>
 
 <body>
 <main>
+
 <h1>My Work Hours</h1>
 <p>Track your shifts and earnings</p>
 
@@ -54,25 +62,43 @@ small{color:#a8b4c7}
 
 <div class="card">
 <h2>Add a shift</h2>
+
 <label>Date</label>
 <input id="date" type="date">
+
 <label>Start time</label>
 <input id="start" type="time" value="09:00">
+
 <label>Finish time</label>
 <input id="end" type="time" value="17:00">
+
 <label>Unpaid break (minutes)</label>
 <input id="break" type="number" value="30" min="0">
+
 <label>Hourly rate (£)</label>
 <input id="rate" type="number" value="14.50" min="0" step="0.01">
+
 <button onclick="addShift()">ADD SHIFT</button>
 </div>
 
 <div class="card">
 <h2>My Summary</h2>
+
 <div class="stats">
-<div class="stat"><small>Total hours</small><strong id="hours">0.00</strong></div>
-<div class="stat"><small>Gross earnings</small><strong id="earnings">£0.00</strong></div>
-<div class="stat"><small>Total shifts</small><strong id="count">0</strong></div>
+<div class="stat">
+<small>Total hours</small>
+<strong id="hours">0.00</strong>
+</div>
+
+<div class="stat">
+<small>Gross earnings</small>
+<strong id="earnings">£0.00</strong>
+</div>
+
+<div class="stat">
+<small>Total shifts</small>
+<strong id="count">0</strong>
+</div>
 </div>
 </div>
 
@@ -81,9 +107,11 @@ small{color:#a8b4c7}
 <div id="history"></div>
 <button onclick="backup()">EXPORT BACKUP</button>
 </div>
+
 </main>
 
 <script>
+
 let shifts=JSON.parse(localStorage.getItem("myShifts")||"[]");
 
 function localDate(d){
@@ -103,21 +131,29 @@ function dateFromMonday(value,offset){
 }
 
 let today=new Date();
+
 document.getElementById("date").value=localDate(today);
 document.getElementById("weekStart").value=localDate(mondayOf(today));
 
-const dayNames=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const dayNames=[
+ "Monday","Tuesday","Wednesday","Thursday",
+ "Friday","Saturday","Sunday"
+];
 
 function buildWeek(){
+
  let monday=document.getElementById("weekStart").value;
  if(!monday)return;
+
  let container=document.getElementById("weekDays");
  container.innerHTML="";
 
  dayNames.forEach((name,i)=>{
+
   let date=dateFromMonday(monday,i);
   let day=document.createElement("div");
   day.className="day";
+
   day.innerHTML=`
    <div class="day-title">
     <b>${name} · ${date}</b>
@@ -126,23 +162,41 @@ function buildWeek(){
      DAY OFF
     </label>
    </div>
+
    <div class="day-fields" id="fields${i}">
-    <div><label>Start time</label><input type="time" id="start${i}" value="09:00"></div>
-    <div><label>Finish time</label><input type="time" id="end${i}" value="17:00"></div>
-    <div><label>Unpaid break (minutes)</label><input type="number" id="break${i}" value="30" min="0"></div>
-   </div>`;
+    <div>
+     <label>Start time</label>
+     <input type="time" id="start${i}" value="09:00">
+    </div>
+    <div>
+     <label>Finish time</label>
+     <input type="time" id="end${i}" value="17:00">
+    </div>
+    <div>
+     <label>Unpaid break (minutes)</label>
+     <input type="number" id="break${i}" value="30" min="0">
+    </div>
+   </div>
+  `;
+
   container.append(day);
  });
 }
 
 function toggleDay(i){
+
  let off=document.getElementById("off"+i).checked;
  let fields=document.getElementById("fields"+i);
+
  fields.classList.toggle("disabled",off);
- fields.querySelectorAll("input").forEach(x=>x.disabled=off);
+
+ fields.querySelectorAll("input").forEach(x=>{
+  x.disabled=off;
+ });
 }
 
 document.getElementById("weekStart").addEventListener("change",buildWeek);
+
 buildWeek();
 
 function save(){
@@ -151,38 +205,67 @@ function save(){
 }
 
 function duration(start,end,br){
+
  let a=start.split(":").map(Number);
  let b=end.split(":").map(Number);
+
  let m=b[0]*60+b[1]-a[0]*60-a[1];
+
  if(m<0)m+=1440;
+
  return m-br;
 }
 
+function validTime(t){
+ if(!/^\d{2}:\d{2}$/.test(t))return false;
+ let [h,m]=t.split(":").map(Number);
+ return h>=0&&h<=23&&m>=0&&m<=59;
+}
+
+function validDate(d){
+ if(!/^\d{4}-\d{2}-\d{2}$/.test(d))return false;
+ let x=new Date(d+"T12:00:00");
+ return !isNaN(x.getTime())&&localDate(x)===d;
+}
+
 function addShift(){
+
  let date=document.getElementById("date").value;
  let start=document.getElementById("start").value;
  let end=document.getElementById("end").value;
  let br=Number(document.getElementById("break").value);
  let rate=Number(document.getElementById("rate").value);
 
- if(!date||!start||!end||br<0||rate<0){
-  alert("Please complete all fields.");
+ if(!validDate(date)||!validTime(start)||!validTime(end)||
+    document.getElementById("break").value===""||
+    document.getElementById("rate").value===""||
+    !Number.isFinite(br)||!Number.isFinite(rate)||
+    br<0||rate<0){
+  alert("Please complete all fields correctly.");
   return;
  }
+
  if(duration(start,end,br)<=0){
   alert("Please check your shift and break.");
   return;
  }
- shifts.push({id:Date.now(),date,start,end,br,rate});
+
+ shifts.push({
+  id:Date.now(),
+  date,start,end,br,rate
+ });
+
  save();
+
  alert("Shift saved!");
 }
 
 function saveWeek(){
+
  let monday=document.getElementById("weekStart").value;
  let rate=Number(document.getElementById("rate").value);
 
- if(!monday||rate<0||!Number.isFinite(rate)){
+ if(!validDate(monday)||!Number.isFinite(rate)||rate<0){
   alert("Please enter a valid week and hourly rate.");
   return;
  }
@@ -191,6 +274,7 @@ function saveWeek(){
  let skipped=0;
 
  for(let i=0;i<7;i++){
+
   if(document.getElementById("off"+i).checked)continue;
 
   let date=dateFromMonday(monday,i);
@@ -198,7 +282,11 @@ function saveWeek(){
   let end=document.getElementById("end"+i).value;
   let br=Number(document.getElementById("break"+i).value);
 
-  if(!start||!end||!Number.isFinite(br)||br<0||duration(start,end,br)<=0){
+  if(!validTime(start)||!validTime(end)||
+     document.getElementById("break"+i).value===""||
+     !Number.isFinite(br)||br<0||
+     duration(start,end,br)<=0){
+
    alert("Please check the times and breaks for "+dayNames[i]+". Use DAY OFF if you are not working.");
    return;
   }
@@ -220,24 +308,81 @@ function saveWeek(){
  }
 
  shifts.push(...newShifts);
+
  save();
 
- alert(newShifts.length+" shifts saved successfully!"+(skipped?" "+skipped+" existing date(s) skipped to avoid duplicates.":""));
+ alert(newShifts.length+" shifts saved successfully!"+
+ (skipped?" "+skipped+" existing date(s) skipped to avoid duplicates.":""));
 }
+
+/* EDIT EXISTING SHIFT */
+
+function editShift(id){
+
+ let s=shifts.find(x=>x.id===id);
+ if(!s)return;
+
+ let date=prompt("Date (YYYY-MM-DD):",s.date);
+ if(date===null)return;
+
+ let start=prompt("Start time (HH:MM):",s.start);
+ if(start===null)return;
+
+ let end=prompt("Finish time (HH:MM):",s.end);
+ if(end===null)return;
+
+ let brText=prompt("Unpaid break (minutes):",s.br);
+ if(brText===null)return;
+
+ let rateText=prompt("Hourly rate (£):",s.rate);
+ if(rateText===null)return;
+
+ let br=Number(brText);
+ let rate=Number(rateText);
+
+ if(!validDate(date)||!validTime(start)||!validTime(end)||
+    brText.trim()===""||rateText.trim()===""||
+    !Number.isFinite(br)||!Number.isFinite(rate)||
+    br<0||rate<0||duration(start,end,br)<=0){
+
+  alert("Please check the information entered.");
+  return;
+ }
+
+ let index=shifts.findIndex(x=>x.id===id);
+
+ if(index===-1)return;
+
+ shifts[index]={
+  ...shifts[index],
+  date,start,end,br,rate
+ };
+
+ save();
+
+ alert("Shift updated successfully!");
+}
+
+/* CALCULATE AND DISPLAY TOTALS */
 
 function hours(s){
  return duration(s.start,s.end,s.br)/60;
 }
 
 function render(){
- let total=0,pay=0;
+
+ let total=0;
+ let pay=0;
+
  let box=document.getElementById("history");
  box.innerHTML="";
 
  shifts.sort((a,b)=>b.date.localeCompare(a.date));
 
  shifts.forEach(s=>{
+
   let h=hours(s);
+
   total+=h;
   pay+=h*s.rate;
 
@@ -245,52 +390,91 @@ function render(){
   row.className="entry";
 
   let info=document.createElement("div");
+
   let title=document.createElement("b");
   title.textContent=s.date+" · "+h.toFixed(2)+" hours";
 
   let detail=document.createElement("small");
-  detail.textContent=s.start+" - "+s.end+" · "+s.br+" min break · £"+(h*s.rate).toFixed(2);
+  detail.textContent=
+   s.start+" - "+s.end+
+   " · "+s.br+" min break · £"+(h*s.rate).toFixed(2);
 
   info.append(title,document.createElement("br"),detail);
 
+  let actions=document.createElement("div");
+  actions.className="actions";
+
+  let edit=document.createElement("button");
+  edit.className="edit";
+  edit.textContent="EDIT";
+  edit.onclick=()=>editShift(s.id);
+
   let btn=document.createElement("button");
   btn.className="delete";
-  btn.textContent="Delete";
+  btn.textContent="DELETE";
+
   btn.onclick=()=>{
+
    if(confirm("Delete this shift?")){
+
     shifts=shifts.filter(x=>x.id!==s.id);
+
     save();
    }
   };
 
-  row.append(info,btn);
+  actions.append(edit,btn);
+
+  row.append(info,actions);
+
   box.append(row);
  });
 
- if(shifts.length===0)box.textContent="No shifts recorded yet.";
+ if(shifts.length===0){
+  box.textContent="No shifts recorded yet.";
+ }
 
  document.getElementById("hours").textContent=total.toFixed(2);
- document.getElementById("earnings").textContent="£"+pay.toFixed(2);
+
+ document.getElementById("earnings").textContent=
+  "£"+pay.toFixed(2);
+
  document.getElementById("count").textContent=shifts.length;
 }
 
+/* EXPORT BACKUP */
+
 function backup(){
- let blob=new Blob([JSON.stringify(shifts,null,2)],{type:"application/json"});
+
+ let blob=new Blob(
+  [JSON.stringify(shifts,null,2)],
+  {type:"application/json"}
+ );
+
  let url=URL.createObjectURL(blob);
+
  let a=document.createElement("a");
  a.href=url;
  a.download="my-work-hours-backup.json";
+
  a.click();
- URL.revokeObjectURL(url);
+
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 
 render();
 
+/* SERVICE WORKER */
+
 if("serviceWorker" in navigator){
+
  window.addEventListener("load",()=>{
+
   navigator.serviceWorker.register("./sw.js");
+
  });
 }
+
 </script>
 </body>
 </html>
